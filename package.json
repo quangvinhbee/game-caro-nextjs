@@ -1,0 +1,19 @@
+{
+  "name": "game-caro-nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3",
+    "next": "10.0.2",
+    "react": "17.0.1",
+    "react-bootstrap": "^1.4.0",
+    "react-dom": "17.0.1",
+    "scss": "^0.2.4"
+  }
+}
