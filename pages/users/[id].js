@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router'
+import Link from 'next/link'
+import Layout from '../../components/includes/Layout';
+import { fetchData } from '../../utils/firebase';
 const id = () => {
     const router = useRouter();
+    const [ROOM, setROOM] = useState({})
     console.log(router.query.id);
+    clearTimeout(setTimeout(async () => {
+        const Room = await fetchData(router.query.id)
+        setROOM(Room)
+    }, 1000))
+    console.log(ROOM);
     return (
-        <div>
-            idididid
-        </div>
+        <>
+            <Layout title={router.query.id}></Layout>
+            <Link href={'/'}>
+                linkkkk
+            </Link>
+        </>
     );
 }
 

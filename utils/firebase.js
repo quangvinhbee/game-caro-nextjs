@@ -1,7 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/storage';
-import * as helper from '../helpers/handleObject'
 
 
 var firebaseConfig = {
@@ -21,7 +20,6 @@ if (firebase.app.length) {
     }
 }
 const data = firebase.database().ref('Caro/ROOM')
-
 export const setRoom = (room) => {
     data
         .child(room.ROOMID)
@@ -36,12 +34,9 @@ export const createData = (room) => {
         .catch((err) => { alert(err) })
 }
 export function fetchData(ID) {
-    return data
-        .child(ID)
-        .once('value')
-        .then((snapshot) => {
-            return snapshot.val()
-        }).catch((err) => { alert(err) })
+    return data.child(ID).once('value').then((snapshot) => {
+        return snapshot.val()
+    }).catch((err) => { console.log(err) })
 }
 export function removeRoom(ID) {
     data.child(ID).remove();
