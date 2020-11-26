@@ -34,7 +34,7 @@ export const createData = (room) => {
         .catch((err) => { alert(err) })
 }
 export function fetchData(ID) {
-    return data.child(ID).once('value').then((snapshot) => {
+    return data.once('value').then((snapshot) => {
         return snapshot.val()
     }).catch((err) => { console.log(err) })
 }
