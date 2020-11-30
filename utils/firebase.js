@@ -2,16 +2,22 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/storage';
 
+const apiKey = process.env.NEXT_PUBLIC_FIREBASE_APIKEY;
+const projectId = process.env.NEXT_PUBLIC_FIREBASE_PROJECTID;
+const messagingSenderId = process.env.NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID;
+const appId = process.env.NEXT_PUBLIC_FIREBASE_APPID;
+const measurementId = process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENTID
+const authDomain = process.env.NEXT_PUBLIC_AUTHDOMAIN
 
 var firebaseConfig = {
-    apiKey: "AIzaSyAw9pehE5_uU3yexHR6fMSHqfKjkwCrT0o",
-    authDomain: "react-redux-router-85f3c.firebaseapp.com",
-    databaseURL: "https://react-redux-router-85f3c.firebaseio.com",
-    projectId: "react-redux-router-85f3c",
-    storageBucket: "react-redux-router-85f3c.appspot.com",
-    messagingSenderId: "1055664854652",
-    appId: "1:1055664854652:web:e75ce2e8522d5cb5645bf9",
-    measurementId: "G-PQFH3WGX7B"
+    apiKey: `${apiKey}`,
+    authDomain: `${authDomain}`,
+    databaseURL: `https://${projectId}.firebaseio.com`,
+    projectId: `${projectId}`,
+    storageBucket: `${projectId}.appspot.com`,
+    messagingSenderId: `${messagingSenderId}`,
+    appId: `${appId}`,
+    measurementId: `${measurementId}`
 };
 if (firebase.app.length) {
     try {
