@@ -18,6 +18,8 @@ const Layout = (props) => {
                 />
                 <script src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
                 <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
                 {/* Bootstrap, Font Awesome 4.7 */}
                 <link rel="stylesheet" href="/css/argon.min.css" />
                 <link rel="stylesheet" href="/css/font-awesome.min.css" />

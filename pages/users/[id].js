@@ -6,7 +6,7 @@ import { fetchData } from '../../utils/firebase';
 const id = () => {
     const router = useRouter();
     const [ROOM, setROOM] = useState({})
-    console.log(router.query.id);
+    console.log(router);
     clearTimeout(setTimeout(async () => {
         const Room = await fetchData(router.query.id)
         setROOM(Room)
@@ -15,6 +15,7 @@ const id = () => {
     return (
         <>
             <Layout title={router.query.id}></Layout>
+            <button onClick={()=>{router.back()}}>button</button>
             <Link href={'/'}>
                 linkkkk
             </Link>

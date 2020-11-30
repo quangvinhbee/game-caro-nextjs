@@ -3,6 +3,12 @@ import 'firebase/database';
 import 'firebase/storage';
 
 
+const apiKey = process.env.APIKEY;
+const projectId = process.env.AUTHDOMAIN;
+const messagingSenderId = process.env.MESSAGINGSENDERID;
+const appId = process.env.APPID;
+console.log(process.env.NEXT_PUBLIC_TERM_PROGRAM)
+
 var firebaseConfig = {
     apiKey: "AIzaSyAw9pehE5_uU3yexHR6fMSHqfKjkwCrT0o",
     authDomain: "react-redux-router-85f3c.firebaseapp.com",

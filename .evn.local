@@ -1,0 +1,7 @@
+GREETING="Hello world"
+APIKEY = "AIzaSyAw9pehE5_uU3yexHR6fMSHqfKjkwCrT0o"
+AUTHDOMAIN = "react-redux-router-85f3c.firebaseapp.com"
+PROJECTID = "react-redux-router-85f3c"
+MESSAGINGSENDERID = "1055664854652"
+APPID="1:1055664854652:web:e75ce2e8522d5cb5645bf9"
+MEASUREMENTID="G-PQFH3WGX7B"

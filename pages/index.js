@@ -4,7 +4,7 @@ import Layout from '../components/includes/Layout'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Alert from 'react-bootstrap/Alert'
-import { fetchData } from '../utils/firebase'
+import  '../utils/firebase'
 
 export default function Home() {
   var show = true
