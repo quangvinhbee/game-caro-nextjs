@@ -1,10 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Luckiest+Guy&family=Open+Sans&family=Oswald&family=Raleway&family=Roboto&display=swap');
+$color-black : #2C3E50 !important;
+$color-blue:rgb(38, 166, 154) !important;
+$color-white:white !important;
+
 * {
     margin: 0;
     padding: 0;
     font-family: 'Open Sans', sans-serif;
 }
 
+.body {
+    background-image: url("../public/images/background.png");
+    background-attachment: fixed;
+    background-position: center;
+    background-blend-mode: color;
+}
+
 .gamecaro {
     background-color: aqua;
     background-image: -moz-element();
+}
+
+.logo {
+    font: {
+        size: 24px !important;
+        family: 'Luckiest Guy', cursive !important;
+    }
+
+    color:$color-black;
+
+    span {
+        @extend .logo;
+        color: $color-blue;
+    }
+}
+
+.appbar {
+    background-color: $color-white;
+}
+
+.btn {
+    width: auto;
+    height: 100%;
+
+    margin-right: 10px !important;
+
+    &-create-room {
+        padding: 10px !important;
+        color: #2C3E50 !important;
+        margin-left: 40px !important;
+
+        span {
+            font: {
+                size: 18px !important;
+                family: 'Luckiest Guy', cursive !important;
+            }
+        }
+
+    }
+
+    &-join-room {
+        padding: 10px !important;
+        color: #2C3E50 !important;
+
+        span {
+            font: {
+                size: 18px !important;
+                family: 'Luckiest Guy', cursive !important;
+            }
+        }
+
+    }
+}
+
+.img {
+    width: auto;
+    height: auto;
+
+    &-logo {
+        width: 80px !important;
+        margin-right: 10px !important;
+    }
 }
