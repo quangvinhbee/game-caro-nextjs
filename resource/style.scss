@@ -47,9 +47,7 @@ $color-white:white !important;
 
 .btn {
     width: auto;
-    height: 100%;
-
-    margin-right: 10px !important;
+    display: block;
 
     &-create-room {
         padding: 10px !important;
@@ -112,13 +110,30 @@ $color-white:white !important;
     }
 }
 
-.createRoom {
+.handleRoom {
     text-align: center;
+    display: block;
+
+    span.title {
+        margin-top: 40px;
+        color: $color-black-light;
+        display: inline-block;
+        letter-spacing: 2px;
+
+        font: {
+            size: 36px !important;
+            family: 'Luckiest Guy', cursive !important;
+        }
+    }
+
+    small {
+        display: block !important;
+    }
 
     .IDRoom {
         background-color: rgba(112, 112, 112, 0.404);
         border-radius: 100px;
-        margin-top: 100px;
+        margin-top: 60px;
         box-shadow:
             0px 2px 4px -1px rgba(0, 0, 0, 0.2),
             0px 4px 5px 0px rgba(0, 0, 0, 0.14),
@@ -149,6 +164,25 @@ $color-white:white !important;
                 size: 24px !important;
                 family: 'Luckiest Guy', cursive !important;
             }
+        }
+
+
+    }
+}
+
+.gameRoom {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    table {
+
+        margin-top: 30px;
+
+        td {
+            border: 2px solid $color-black-light;
+            width: 40px;
+            height: 40px;
         }
     }
 }

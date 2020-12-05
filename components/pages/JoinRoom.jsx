@@ -2,18 +2,21 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+import Link from 'next/link'
 export default function JoinRoom(props) {
     return (
         <div className='body'>
-            <Container maxWidth='xs' className='createRoom'>
+            <Container maxWidth='xs' className='handleRoom'>
+                <span className='title'>Join Room</span>
                 <TextField
-                    disabled
                     id="outlined-disabled"
-                    label="ID ROOM"
-                    defaultValue="1234"
+                    label="Type ID ROOM"
+                    defaultValue=""
                     variant="outlined"
                     className='IDRoom'
                 />
+                <small>
+                    Enter the code</small>
                 <Button
                     variant="contained"
                     color="default"
