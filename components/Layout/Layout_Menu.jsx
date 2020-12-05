@@ -5,12 +5,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 
 import Button from '@material-ui/core/Button';
-import Container from '@material-ui/core/Container';
+import Link from 'next/link'
 
 export default function Layout_Menu() {
 
   return (
-    <div>
+    <>
       <CssBaseline />
       <AppBar position="fixed" className='appbar'>
         <Toolbar>
@@ -18,19 +18,10 @@ export default function Layout_Menu() {
           <Typography variant="h3" noWrap className='logo'>
             CARO <span>GAME</span>
           </Typography>
-          <Button className='btn btn-create-room'>Create Room</Button>
-          <Button className='btn btn-join-room'>Join Room</Button>
+          <Button className='btn btn-create-room'><Link href='/CreateRoom' className='btn btn-create-room'>Create Room</Link></Button>
+          <Button className='btn btn-join-room'><Link href='/JoinRoom' className='btn btn-create-room'>Join Room</Link></Button>
         </Toolbar>
       </AppBar>
-      <div className='body'>
-        <Container maxWidth="lg">
-          <Typography component="div" style={{ height: '100%', width: '100%' }}>
-            conteonteonteoteonotenotoenotenotenotnontoenotoenotessssssssssssssssssssssdsadsadasdasdasdasdasdasdasdas
-            conteonteonteoteonotenotoenotenotsenotnontoenotoenotessssssssssssssssssssssdsadsadasdasdasdasdasdasdasdas
-            conteonteonteoteonotenotoenotenotenotnontoenotoenotessssssssssssssssssssssdsadsadasdasdasdasdasdasdasdas
-            </Typography>
-        </Container>
-      </div >
-    </div >
+    </ >
   );
 }
