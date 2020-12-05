@@ -1,5 +1,5 @@
-import Layout from '../components/layout/Layout'
-import Layout_Menu from '../components/layout/Layout_Menu'
+import Layout from '../components/Layout/Layout'
+import Layout_Menu from '../components/Layout/Layout_Menu'
 
 export default function Home(props) {
   return (
