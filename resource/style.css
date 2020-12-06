@@ -12,7 +12,7 @@
   background-position: center;
   margin-top: 60px;
   width: 100vw;
-  min-height: calc(100vh - 70px);
+  height: calc(100vh - 70px);
 }
 
 .gamecaro {
@@ -26,7 +26,7 @@
   color: #2C3E50 !important;
 }
 .logo span {
-  color: #26a69a !important;
+  color: #26a699 !important;
 }
 
 .appbar {
@@ -123,12 +123,20 @@
   text-align: center;
   display: flex;
   justify-content: center;
+  background-color: rgba(163, 163, 163, 0.04);
+  height: calc(100vh - 60px);
+  width: auto;
 }
 .gameRoom table {
   margin-top: 30px;
+  border: 2px solid rgba(110, 110, 110, 0.67);
+  background-color: white;
 }
 .gameRoom table td {
-  border: 2px solid #1a4a7a !important;
-  width: 40px;
-  height: 40px;
+  border: 0.1px solid rgba(110, 110, 110, 0.329);
+  width: 30px;
+  height: 30px;
+}
+.gameRoom table td:hover {
+  background-color: rgba(110, 110, 110, 0.144);
 }

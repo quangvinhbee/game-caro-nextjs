@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Luckiest+Guy&family=Open+Sans&family=Oswald&family=Raleway&family=Roboto&display=swap');
 $color-black : #2C3E50 !important;
 $color-black-light : #1a4a7a !important;
-$color-blue:rgb(38, 166, 154) !important;
+$color-blue:rgb(38, 166, 153) !important;
 $color-white:white !important;
 
 * {
@@ -17,7 +17,7 @@ $color-white:white !important;
     background-position: center;
     margin-top: 60px;
     width: 100vw;
-    min-height: calc(100vh - 70px);
+    height: calc(100vh - 70px);
 }
 
 
@@ -174,15 +174,23 @@ $color-white:white !important;
     text-align: center;
     display: flex;
     justify-content: center;
+    background-color: rgba(163, 163, 163, 0.040);
+    height: calc(100vh - 60px);
+    width: auto;
 
     table {
-
         margin-top: 30px;
+        border: 2px solid rgba(110, 110, 110, 0.670);
+        background-color: rgb(255, 255, 255);
 
         td {
-            border: 2px solid $color-black-light;
-            width: 40px;
-            height: 40px;
+            border: 0.1px solid rgba(110, 110, 110, 0.329);
+            width: 30px;
+            height: 30px;
+
+            &:hover {
+                background-color: rgba(110, 110, 110, 0.144);
+            }
         }
     }
 }

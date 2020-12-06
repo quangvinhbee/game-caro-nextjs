@@ -1,8 +1,10 @@
 import React from 'react';
+import Cells from '../Layout/Cells';
 
-const PlayRoom = () => {
-    var table = [];
+const PlayRoom = (props) => {
+    var cols = [19];
     for (var i = 0; i < 19; i++) {
+        cols[i] = <Cells idRow={i}></Cells>
     }
     return (
         <>
@@ -10,7 +12,7 @@ const PlayRoom = () => {
                 <div className='gameRoom'>
                     <table>
                         <tbody>
-                            {table}
+                            {cols}
                         </tbody>
                     </table>
                 </div>
