@@ -1,14 +1,14 @@
 import React from 'react';
 
 const Cells = (props) => {
-    var rows = [19];
-    const { idRow } = props;
+    var cols = [19];
+    const { idCol } = props;
     for (var i = 0; i < 19; i++) {
-        rows[i] = <td id={`${idRow * i}-${i}`} ></td>
+        cols[i] = <td id={`${idCol}-${i}`} ></td>
     }
     return (
         <tr>
-            {rows}
+            {cols}
         </tr>
     );
 }

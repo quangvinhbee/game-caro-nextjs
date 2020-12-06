@@ -11,11 +11,7 @@ export default function Home(props) {
       <Layout_Menu></Layout_Menu>
       <div className='body'>
         <Container maxWidth="lg">
-          <Typography component="div" style={{ height: '100%', width: '100%' }}>
-            conteonteonteoteonotenotoenotenotenotnontoenotoenotessssssssssssssssssssssdsadsadasdasdasdasdasdasdasdas
-            conteonteonteoteonotenotoenotenotsenotnontoenotoenotessssssssssssssssssssssdsadsadasdasdasdasdasdasdasdas
-            conteonteonteoteonotenotoenotenotenotnontoenotoenotessssssssssssssssssssssdsadsadasdasdasdasdasdasdasdas
-            </Typography>
+
         </Container>
       </div >
     </>
