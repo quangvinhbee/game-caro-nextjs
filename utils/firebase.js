@@ -12,7 +12,7 @@ const authDomain = process.env.NEXT_PUBLIC_AUTHDOMAIN
 var firebaseConfig = {
     apiKey: `${apiKey}`,
     authDomain: `${authDomain}`,
-    databaseURL: `https://${projectId}.firebaseio.com`,
+    databaseURL: `https://caronextjs-default-rtdb.firebaseio.com`,
     projectId: `${projectId}`,
     storageBucket: `${projectId}.appspot.com`,
     messagingSenderId: `${messagingSenderId}`,
@@ -25,7 +25,7 @@ if (firebase.app.length) {
     } catch (error) {
     }
 }
-const data = firebase.database().ref('Caro/ROOM')
+const data = firebase.database().ref('/Caro')
 export const setRoom = (room) => {
     data
         .child(room.ROOMID)
@@ -39,7 +39,7 @@ export const createData = (room) => {
         .set(room)
         .catch((err) => { alert(err) })
 }
-export function fetchData(ID) {
+export function fetchData() {
     return data.once('value').then((snapshot) => {
         return snapshot.val()
     }).catch((err) => { console.log(err) })

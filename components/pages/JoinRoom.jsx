@@ -22,7 +22,7 @@ export default function JoinRoom(props) {
                     color="default"
                     className='btn btn-play'
                 >
-                    <i class="fa fa-pencil" aria-hidden="true"></i> PLAY
+                    <i className="fa fa-pencil" aria-hidden="true"></i> PLAY
                 </Button>
             </Container>
         </div>

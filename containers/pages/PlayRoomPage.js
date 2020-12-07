@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout/Layout'
 import Layout_Menu from '../../components/Layout/Layout_Menu'
 import PlayRoom from '../../components/pages/PlayRoom';
-import Cells from '../Layout/Cells';
+import Rows from '../Layout/Rows';
 
-const PlayRoomPage = () => {
+const PlayRoomPage = (props) => {
     var rows = [19];
+    const [table, setTable] = useState([])
+    useEffect(() => {
+        var tb = table;
+        for (var i = 0; i < 362; i++) {
+            tb[i] = -1
+        }
+        setTable(tb)
+    }, [])
+    const getidCell = (id) => {
+        var tb = [...table];
+        tb[id] = 0;
+        setTable(tb)
+    }
     for (var i = 0; i < 19; i++) {
-        rows[i] = <Cells idCol={i}></Cells>
+        rows[i] = <Rows idCell={getidCell} key={i} idCol={i} table={table}></Rows>
     }
     return (
         <>

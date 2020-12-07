@@ -77,7 +77,9 @@
   height: auto;
 }
 .img-logo {
+  content: url("../public/images/logo.png");
   width: 80px !important;
+  height: auto;
   margin-right: 10px !important;
 }
 
