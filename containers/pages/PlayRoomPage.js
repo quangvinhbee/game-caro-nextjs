@@ -3,9 +3,13 @@ import Layout from '../../components/Layout/Layout'
 import Layout_Menu from '../../components/Layout/Layout_Menu'
 import PlayRoom from '../../components/pages/PlayRoom';
 import Rows from '../Layout/Rows';
+import { useRouter } from 'next/router'
+import { setRoom, getRoom } from '../../utils/firebase'
 
 const PlayRoomPage = (props) => {
     var rows = [19];
+    const router = useRouter();
+    const idRoom = router.query.idRoom;
     const [table, setTable] = useState([])
     useEffect(() => {
         var tb = table;
@@ -14,10 +18,23 @@ const PlayRoomPage = (props) => {
         }
         setTable(tb)
     }, [])
+    useEffect(() => {
+        var interval = setInterval(() => {
+            getRoom(idRoom).then(res => {
+                if (res !== null) {
+                    console.log(res);
+                } else {
+
+                }
+            })
+        }, 1000);
+        return () => clearInterval(interval);
+    }, [])
     const getidCell = (id) => {
         var tb = [...table];
         tb[id] = 0;
         setTable(tb)
+        setRoom(tb, idRoom)
     }
     for (var i = 0; i < 19; i++) {
         rows[i] = <Rows idCell={getidCell} key={i} idCol={i} table={table}></Rows>
