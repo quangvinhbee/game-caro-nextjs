@@ -200,3 +200,27 @@ $color-white:white !important;
         }
     }
 }
+
+svg {
+    circle {
+        stroke-width: 6px;
+        animation: animate-circle 2s linear forwards;
+    }
+
+    path {
+        fill: $color-blue;
+        stroke-width: 6;
+        transition: fill .3s ease-in-out;
+    }
+}
+
+@keyframes animate-circle {
+    0% {
+        stroke-dasharray: 0;
+    }
+
+
+    100% {
+        stroke-dasharray: 500;
+    }
+}

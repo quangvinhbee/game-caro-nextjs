@@ -14,7 +14,7 @@ const CreateRoomPage = () => {
         Room.PlayerNext = 1;
         Room.Status = 'waiting';
         Room.Point = '0-0';
-        window.localStorage.setItem('status', Room)
+        window.localStorage.setItem('player', 1)
         setStatus_Firebase(Room, codeRoom);
     }
     return (

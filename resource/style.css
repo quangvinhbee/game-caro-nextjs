@@ -143,3 +143,22 @@
 .gameRoom table td:hover {
   background-color: rgba(110, 110, 110, 0.144);
 }
+
+svg circle {
+  stroke-width: 6px;
+  animation: animate-circle 2s linear forwards;
+}
+svg path {
+  fill: #26a699 !important;
+  stroke-width: 6;
+  transition: fill 0.3s ease-in-out;
+}
+
+@keyframes animate-circle {
+  0% {
+    stroke-dasharray: 0;
+  }
+  100% {
+    stroke-dasharray: 500;
+  }
+}
