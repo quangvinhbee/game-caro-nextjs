@@ -4,6 +4,9 @@ import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 export default function CreateRoom(props) {
+    const handleCreateRoom = () => {
+        props.handleCreateRoom()
+    }
     const { codeRoom } = props;
     return (
         <div className='body'>
@@ -24,6 +27,7 @@ export default function CreateRoom(props) {
                         variant="contained"
                         color="default"
                         className='btn btn-play'
+                        onClick={handleCreateRoom}
                     >
                         <i className="fa fa-pencil" aria-hidden="true"></i> PLAY
                     </Button>
