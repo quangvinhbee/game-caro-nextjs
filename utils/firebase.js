@@ -33,10 +33,18 @@ export const setRoom = (room, idRoom) => {
         .catch((err) => { alert(err) })
 }
 export function getRoom(idRoom) {
-    return data.child(idRoom).child('TABLE').once('value').then((snapshot) => {
+    return data.child(`${idRoom}`).child('TABLE').once('value').then((snapshot) => {
         return snapshot.val()
     }).catch((err) => { console.log(err) })
 }
+
+
+
+
+
+
+
+
 
 
 export const createData = (room, idRoom) => {

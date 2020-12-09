@@ -4,7 +4,6 @@ const Rows = (props) => {
     var cols = [19];
     const { idCol, table } = props;
     const handleClick = (e) => {
-        var audio = new Audio('/sound/chess.wav');
         var audio2 = new Audio('/sound/chess.wav');
         audio2.load();
         audio2.play();

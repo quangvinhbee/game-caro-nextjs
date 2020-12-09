@@ -20,16 +20,18 @@ const PlayRoomPage = (props) => {
     }, [])
     useEffect(() => {
         var interval = setInterval(() => {
-            getRoom(idRoom).then(res => {
-                if (res !== null) {
-                    console.log(res);
-                } else {
+            if (idRoom !== null) {
+                getRoom(idRoom).then(res => {
+                    if (res !== null) {
+                        setTable(res);
+                    } else {
 
-                }
-            })
-        }, 1000);
+                    }
+                })
+            }
+        }, 100);
         return () => clearInterval(interval);
-    }, [])
+    }, [table])
     const getidCell = (id) => {
         var tb = [...table];
         tb[id] = 0;
