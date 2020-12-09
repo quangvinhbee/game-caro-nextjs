@@ -2,8 +2,10 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-import Link from 'next/link'
 export default function JoinRoom(props) {
+    const handleChange = (e) => {
+        console.log(e.target.value);
+    }
     return (
         <div className='body'>
             <Container maxWidth='xs' className='handleRoom'>
@@ -14,6 +16,7 @@ export default function JoinRoom(props) {
                     defaultValue=""
                     variant="outlined"
                     className='IDRoom'
+                    onChange={handleChange}
                 />
                 <small>
                     Enter the code</small>

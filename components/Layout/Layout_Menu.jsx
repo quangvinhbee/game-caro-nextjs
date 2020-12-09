@@ -6,8 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 
-export default function Layout_Menu() {
-
+export default function Layout_Menu(props) {
   return (
     <>
       <CssBaseline />

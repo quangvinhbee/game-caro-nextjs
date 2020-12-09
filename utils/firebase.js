@@ -26,10 +26,10 @@ if (firebase.app.length) {
     }
 }
 const data = firebase.database().ref('/Caro')
-export const setRoom = (room, idRoom) => {
+export const setRoom = (table, idRoom) => {
     data
         .child(idRoom).child('TABLE')
-        .set(room)
+        .set(table)
         .catch((err) => { alert(err) })
 }
 export function getRoom(idRoom) {

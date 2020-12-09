@@ -4,6 +4,7 @@ import { Container } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link'
 export default function CreateRoom(props) {
+    const { codeRoom } = props;
     return (
         <div className='body'>
             <Container maxWidth='xs' className='handleRoom'>
@@ -12,19 +13,18 @@ export default function CreateRoom(props) {
                     disabled
                     id="outlined-disabled"
                     label="ID ROOM"
-                    defaultValue="1234"
+                    defaultValue={codeRoom}
                     variant="outlined"
                     className='IDRoom'
                 />
                 <small>
                     Send this code to your opponent</small>
-                <Link href='/Room/1234'>
+                <Link href={`/Room/${codeRoom}`}>
                     <Button
                         variant="contained"
                         color="default"
                         className='btn btn-play'
                     >
-
                         <i className="fa fa-pencil" aria-hidden="true"></i> PLAY
                     </Button>
                 </Link>

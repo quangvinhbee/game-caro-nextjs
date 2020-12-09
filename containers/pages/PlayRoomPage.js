@@ -12,20 +12,17 @@ const PlayRoomPage = (props) => {
     const idRoom = router.query.idRoom;
     const [table, setTable] = useState([])
     useEffect(() => {
-        var tb = table;
-        for (var i = 0; i < 362; i++) {
-            tb[i] = -1
-        }
-        setTable(tb)
-    }, [])
-    useEffect(() => {
         var interval = setInterval(() => {
             if (idRoom !== null) {
                 getRoom(idRoom).then(res => {
                     if (res !== null) {
                         setTable(res);
                     } else {
-
+                        var tb = [...table];
+                        for (var i = 0; i < 362; i++) {
+                            tb[i] = -1
+                        }
+                        setTable(tb)
                     }
                 })
             }
@@ -43,7 +40,7 @@ const PlayRoomPage = (props) => {
     }
     return (
         <>
-            <Layout title="Playing..."></Layout>
+            <Layout title="Playing. . ."></Layout>
             <Layout_Menu></Layout_Menu>
             <PlayRoom>
                 {rows}
