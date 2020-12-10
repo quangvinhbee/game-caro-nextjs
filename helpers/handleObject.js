@@ -58,7 +58,6 @@ export const check_Win = (table, WIDTH, index, player) => {
 
     while (stt1) {
         index1 -= (WIDTH + 1)
-        console.log(index1);
         for (var i = 0; i < WIDTH; i++) {
             if (index1 === i || index1 === i * WIDTH) stt1 = false;
         }
@@ -85,7 +84,6 @@ export const check_Win = (table, WIDTH, index, player) => {
 
     while (stt1) {
         index1 -= (WIDTH - 1)
-        console.log(index1);
         for (var i = 0; i < WIDTH; i++) {
             if (index1 === i || index1 === ((WIDTH * i) + (WIDTH - 1))) stt1 = false;
         }

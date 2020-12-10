@@ -3,6 +3,8 @@ $color-black : #2C3E50 !important;
 $color-black-light : #1a4a7a !important;
 $color-blue:rgb(38, 166, 153) !important;
 $color-white:white !important;
+$width_table:551px;
+$height_table:551px;
 
 * {
     margin: 0;
@@ -175,13 +177,18 @@ $color-white:white !important;
 .gameRoom {
     text-align: center;
     display: flex;
+    margin-left: auto;
+    margin-right: auto;
     justify-content: center;
+    align-content: center;
     background-color: rgba(163, 163, 163, 0.040);
-    height: calc(100vh - 60px);
+    height: auto;
     width: auto;
 
     table {
-        margin-top: 30px;
+        margin-top: 20px;
+        width: $width_table;
+        height: $height_table;
         border: 2px solid rgba(110, 110, 110, 0.670);
         background-color: rgb(255, 255, 255);
         box-shadow:
@@ -191,15 +198,29 @@ $color-white:white !important;
 
         td {
             border: 0.1px solid rgba(110, 110, 110, 0.329);
-            width: 30px;
-            height: 30px;
+            width: $width_table/19;
+            height: $height_table/19;
 
             &:hover {
                 background-color: rgba(110, 110, 110, 0.144);
             }
         }
     }
+
+
 }
+
+.footer_table {
+    display: flex;
+    justify-content: center;
+
+    .score {
+        width: $width_table;
+        height: 100px;
+        background-color: white;
+    }
+}
+
 
 svg {
     circle {

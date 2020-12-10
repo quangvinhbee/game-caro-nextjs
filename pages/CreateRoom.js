@@ -3,9 +3,9 @@ import CreateRoomPage from '../containers/pages/CreateRoomPage';
 
 const CreateRoom = () => {
     return (
-        <div>
+        <>
             <CreateRoomPage></CreateRoomPage>
-        </div>
+        </>
     );
 }
 

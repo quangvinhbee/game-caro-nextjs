@@ -11,6 +11,7 @@ const PlayRoom = (props) => {
                         </tbody>
                     </table>
                 </div>
+                {props.footer_table}
             </div>
         </>
     );

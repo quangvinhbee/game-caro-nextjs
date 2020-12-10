@@ -3,9 +3,9 @@ import JoinRoomPage from '../containers/pages/JoinRoomPage';
 
 const CreateRoom = () => {
     return (
-        <div>
+        <>
             <JoinRoomPage></JoinRoomPage>
-        </div>
+        </>
     );
 }
 
