@@ -28,32 +28,42 @@ if (firebase.app.length) {
 const data = firebase.database().ref('/Caro')
 
 export const setTable_Firebase = (table, idRoom) => {
-    data
-        .child(idRoom).child('TABLE')
-        .set(table)
-        .catch((err) => { alert(err) })
+    if (idRoom !== undefined && idRoom !== null) {
+        data
+            .child(idRoom).child('TABLE')
+            .set(table)
+            .catch((err) => { alert(err) })
+    }
 }
 export const setStatus_Firebase = (Room, idRoom) => {
-    data
-        .child(idRoom).child('STATUS')
-        .set(Room)
-        .catch((err) => { alert(err) })
+    if (idRoom !== undefined && idRoom !== null) {
+        data
+            .child(idRoom).child('STATUS')
+            .set(Room)
+            .catch((err) => { alert(err) })
+    }
 }
 export function getTable_Firebase(idRoom) {
-    return data.child(`${idRoom}`).child('TABLE').once('value').then((snapshot) => {
-        return snapshot.val()
-    }).catch((err) => { console.log(err) })
+    if (idRoom !== undefined && idRoom !== null) {
+        return data.child(`${idRoom}`).child('TABLE').once('value').then((snapshot) => {
+            return snapshot.val()
+        }).catch((err) => { console.log(err) })
+    }
 }
 export function getStatus_Firebase(idRoom) {
-    return data.child(`${idRoom}`).child('STATUS').once('value').then((snapshot) => {
-        return snapshot.val()
-    }).catch((err) => { console.log(err) })
+    if (idRoom !== undefined && idRoom !== null) {
+        return data.child(`${idRoom}`).child('STATUS').once('value').then((snapshot) => {
+            return snapshot.val()
+        }).catch((err) => { console.log(err) })
+    }
 }
 
 export function getRoom_Firebase(idRoom) {
-    return data.child(`${idRoom}`).once('value').then((snapshot) => {
-        return snapshot.val()
-    }).catch((err) => { console.log(err) })
+    if (idRoom !== undefined && idRoom !== null) {
+        return data.child(`${idRoom}`).once('value').then((snapshot) => {
+            return snapshot.val()
+        }).catch((err) => { console.log(err) })
+    }
 }
 
 

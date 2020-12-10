@@ -5,6 +5,7 @@ import PlayRoom from '../../components/pages/PlayRoom';
 import Rows from '../Layout/Rows';
 import { useRouter } from 'next/router'
 import { setTable_Firebase, getTable_Firebase, setStatus_Firebase, getStatus_Firebase } from '../../utils/firebase'
+import { check_Win } from '../../helpers/handleObject';
 
 const PlayRoomPage = (props) => {
     var rows = [19];
@@ -57,11 +58,28 @@ const PlayRoomPage = (props) => {
                 getStatus_Firebase(idRoom).then(res => {
                     if (res) {
                         setStatus(res)
-                        if ((window.localStorage.getItem('player') === null || Player === 2) && Player !== 1 && status.Status === 'waiting' && status.Player2 === false) {
+                        console.log(res.CellJustChecked);
+                        if (res.Status === 'started') {
+                            if (res.PlayerNext === 1) {
+                                if (check_Win(table, 19, res.CellJustChecked, 2)) {
+                                    //alert(`Player ${2} win`)
+                                }
+                            } else {
+                                if (check_Win(table, 19, res.CellJustChecked, 1)) {
+                                    //alert(`Player ${1} win`)
+                                }
+                            }
+
+                        }
+                        if ((window.localStorage.getItem('player') === null || Player === 2)
+                            && Player !== 1
+                            && status.Status === 'waiting'
+                            && status.Player2 === false) {//start game
                             var Room = {}
                             Room.Player1 = true;
                             Room.Player2 = true;
                             Room.PlayerNext = 1;
+                            Room.CellJustChecked = null;
                             Room.Status = 'started';
                             Room.Point = '0-0';
                             window.localStorage.setItem('player', 2)
@@ -78,6 +96,7 @@ const PlayRoomPage = (props) => {
             var tb = [...table];
             tb[id] = Player;
             var stt = { ...status }
+            stt.CellJustChecked = id;
             if (Player === 1) {
                 stt.PlayerNext = 2
             } else {

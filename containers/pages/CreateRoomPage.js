@@ -12,6 +12,7 @@ const CreateRoomPage = () => {
         Room.Player1 = true;
         Room.Player2 = false;
         Room.PlayerNext = 1;
+        Room.CellJustChecked = -1;
         Room.Status = 'waiting';
         Room.Point = '0-0';
         window.localStorage.setItem('player', 1)

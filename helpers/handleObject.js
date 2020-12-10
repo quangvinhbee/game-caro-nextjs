@@ -25,12 +25,12 @@ export const check_Win = (table, WIDTH, index, player) => {
 
     while (index1 > limit_LEFT) {
         index1--
-        if (table[index1].STATUS === player) tong++
+        if (table[index1] === player) tong++
         else break
     }
     while (index2 < limit_RIGHT) {
         index2++
-        if (table[index2].STATUS === player) tong++
+        if (table[index2] === player) tong++
         else break
     }
     if (tong >= 5) return true
@@ -42,12 +42,12 @@ export const check_Win = (table, WIDTH, index, player) => {
 
     while (index1 > limit_TOP) {
         index1 -= WIDTH
-        if (table[index1].STATUS === player) tong++
+        if (table[index1] === player) tong++
         else break
     }
     while (index2 < limit_BOTTOM) {
         index2 += WIDTH
-        if (table[index2].STATUS === player) tong++
+        if (table[index2] === player) tong++
         else break
     }
     if (tong >= 5) return true
@@ -63,7 +63,7 @@ export const check_Win = (table, WIDTH, index, player) => {
             if (index1 === i || index1 === i * WIDTH) stt1 = false;
         }
         if (index1 > 0) {
-            if (table[index1].STATUS === player) tong++
+            if (table[index1] === player) tong++
             else break
         } else break
     }
@@ -73,7 +73,7 @@ export const check_Win = (table, WIDTH, index, player) => {
             if (index2 === ((WIDTH * i) + (WIDTH - 1)) || index2 === (WIDTH - 1) - i) stt2 = false
         }
         if (index2 > 0 && index2 < WIDTH * WIDTH) {
-            if (table[index2].STATUS === player) tong++
+            if (table[index2] === player) tong++
             else break
         } else break
     }
@@ -90,7 +90,7 @@ export const check_Win = (table, WIDTH, index, player) => {
             if (index1 === i || index1 === ((WIDTH * i) + (WIDTH - 1))) stt1 = false;
         }
         if (index1 > 0) {
-            if (table[index1].STATUS === player) tong++
+            if (table[index1] === player) tong++
             else break
         } else break
     }
@@ -100,7 +100,7 @@ export const check_Win = (table, WIDTH, index, player) => {
             if (index2 === i * WIDTH || index2 === (WIDTH - 1) - i) stt2 = false
         }
         if (index2 > 0 && index2 < WIDTH * WIDTH) {
-            if (table[index2].STATUS === player) tong++
+            if (table[index2] === player) tong++
             else break
         } else break
     }
