@@ -13,7 +13,6 @@ const PlayRoomPage = (props) => {
     var Player = 0;
     const [table, setTable] = useState([])
     const [status, setStatus] = useState({
-        PlayerNext: 1,
         Status: 'waiting',
         Point: '0-0',
     })
@@ -27,7 +26,6 @@ const PlayRoomPage = (props) => {
             var Room = {}
             Room.Player1 = false;
             Room.Player2 = false;
-            Room.PlayerNext = 1;
             Room.Status = 'waiting';
             Room.Point = status.Point;
             setStatus_Firebase(Room, idRoom);
@@ -59,7 +57,7 @@ const PlayRoomPage = (props) => {
                 getStatus_Firebase(idRoom).then(res => {
                     if (res) {
                         setStatus(res)
-                        if ((window.localStorage.getItem('player') === null || Player === 2) && Player !== 1 && status.Status === 'waiting') {
+                        if ((window.localStorage.getItem('player') === null || Player === 2) && Player !== 1 && status.Status === 'waiting' && status.Player2 === false) {
                             var Room = {}
                             Room.Player1 = true;
                             Room.Player2 = true;
@@ -101,6 +99,7 @@ const PlayRoomPage = (props) => {
 
             <PlayRoom>
                 {status.Status}
+                {status.PlayerNext}
                 {rows}
             </PlayRoom>
         </>
