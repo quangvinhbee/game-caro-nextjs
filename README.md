@@ -14,17 +14,44 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-## Learn More
+### Installation
 
-To learn more about Next.js, take a look at the following resources:
+Requires [Node.js](https://nodejs.org/) v4+ to run.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Install the dependencies
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```sh
+$ cd expense-mgt
+$ npm install
+```
 
-## Deploy on Vercel
+Config Environment Variables
+```sh
+NEXT_PUBLIC_PRIVATE_KEY=(Your private key - key jwt)
+NEXT_PUBLIC_FIREBASE_APPID=(Appid Firebase)
+NEXT_PUBLIC_FIREBASE_APIKEY=(Apikey Firebase)
+NEXT_PUBLIC_FIREBASE_MESSAGINGSENDERID=(MessagingSenderID Firebase)
+NEXT_PUBLIC_FIREBASE_PROJECTID=(ProjectId Firebase)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Run For Development
+```sh
+$ npm run dev
+```
+
+Build For Production
+```sh
+$ npm run build
+$ npm run start-dev
+```
+
+Public Production (with PORT)
+```sh
+$ npm start
+```
+### Todos
+
+- Dark Mode
+ - Write MORE Tests
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
