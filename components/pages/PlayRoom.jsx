@@ -14,7 +14,6 @@ const PlayRoom = (props) => {
                 {props.footer_table}
                 {props.footer_table}
                 {props.footer_table}
-                {props.footer_table}
             </div>
         </>
     );
