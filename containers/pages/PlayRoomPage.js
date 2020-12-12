@@ -24,6 +24,27 @@ const PlayRoomPage = (props) => {
             ev.preventDefault();
         });
     }
+
+    useEffect(() => {//load Table
+        var interval = setInterval(() => {
+            if (idRoom !== null && idRoom !== undefined) {
+                getTable_Firebase(idRoom).then(res => {
+                    if (res) {
+                        setTable(res);
+                    } else {
+                        var tb = [...table];
+                        for (var i = 0; i < 362; i++) {
+                            tb[i] = -1
+                        }
+                        setTable(tb)
+                    }
+                })
+            } else {
+                setTable([...table])
+            }
+        }, 100);
+        return () => clearInterval(interval);
+    }, [table])
     useEffect(() => {//load Status
         var interval = setInterval(() => {
             console.log('intervallll', interval);
@@ -82,26 +103,6 @@ const PlayRoomPage = (props) => {
                         }
                     }
                 })
-            }
-        }, 100);
-        return () => clearInterval(interval);
-    }, [table])
-    useEffect(() => {//load Table
-        var interval = setInterval(() => {
-            if (idRoom !== null && idRoom !== undefined) {
-                getTable_Firebase(idRoom).then(res => {
-                    if (res) {
-                        setTable(res);
-                    } else {
-                        var tb = [...table];
-                        for (var i = 0; i < 362; i++) {
-                            tb[i] = -1
-                        }
-                        setTable(tb)
-                    }
-                })
-            } else {
-                setTable([...table])
             }
         }, 100);
         return () => clearInterval(interval);
