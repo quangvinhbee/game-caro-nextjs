@@ -152,8 +152,7 @@ const PlayRoomPage = (props) => {
             <Layout title="Playing. . ."></Layout>
             <Layout_Menu></Layout_Menu>
 
-            <PlayRoom footer_table={<Footer_table />}>
-                {rows}
+            <PlayRoom footer_table={<Footer_table />} table={rows}>
             </PlayRoom>
 
         </>

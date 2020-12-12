@@ -7,7 +7,7 @@ const PlayRoom = (props) => {
                 <div className='gameRoom'>
                     <table>
                         <tbody>
-                            {props.children}
+                            {props.table}
                         </tbody>
                     </table>
                 </div>
