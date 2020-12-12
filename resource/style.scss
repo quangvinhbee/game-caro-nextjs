@@ -274,6 +274,22 @@ $height_table: 100vw/12*5-1;
         .ready {
             color: #1eff00 !important;
         }
+
+        .not_ready {
+            color: #ff0000 !important;
+        }
+    }
+
+    .countdown h3 {
+        font: {
+            size: 40px !important;
+            family: 'Luckiest Guy', cursive !important;
+
+        }
+
+        -webkit-text-fill-color: #fd0b0bcc;
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black;
     }
 }
 

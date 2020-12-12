@@ -7,7 +7,6 @@ import { useRouter } from 'next/router'
 import { setTable_Firebase, getTable_Firebase, setStatus_Firebase, getStatus_Firebase } from '../../utils/firebase'
 import { check_Win } from '../../helpers/handleObject';
 import { geolocation } from '../../utils/api';
-import Score_board from '../../components/Layout/Score_board';
 
 const PlayRoomPage = (props) => {
     var rows = [19];
@@ -16,8 +15,6 @@ const PlayRoomPage = (props) => {
     var Player = 0;
     const [table, setTable] = useState([])
     const [status, setStatus] = useState({
-        Player1: true,
-        Player2: false,
         PlayerNext: 1,
         CellJustChecked: -1,
         Status: '',
@@ -25,55 +22,12 @@ const PlayRoomPage = (props) => {
         IPv4_Player2: '',
         Point: '0-0',
     })
-    if (typeof window !== 'undefined') {
-        if (window.localStorage.getItem('player') !== null) {
-            Player = parseInt(window.localStorage.getItem('player'))
-        }
-        //----------------------------------------------------------------
-        window.addEventListener("beforeunload", (ev) => {
-            ev.preventDefault();
-        });
-    }
-    useEffect(() => {
-
-
-        return () => {
-            // var Room = {}
-            // Room.Player1 = false;
-            // Room.Player2 = false;
-            // Room.Status = 'waiting';
-            // Room.IPv4_Player1 = '';
-            // Room.IPv4_Player2 = '';
-            // Room.Point = status.Point;
-            // setStatus_Firebase(Room, idRoom);
-        }
-    }, [])
-    useEffect(() => {//load Table
-        var interval = setInterval(() => {
-            if (idRoom !== null && idRoom !== undefined) {
-                getTable_Firebase(idRoom).then(res => {
-                    if (res) {
-                        setTable(res);
-                    } else {
-                        var tb = [...table];
-                        for (var i = 0; i < 362; i++) {
-                            tb[i] = -1
-                        }
-                        setTable(tb)
-                    }
-                })
-            } else {
-                setTable([...table])
-            }
-        }, 100);
-        return () => clearInterval(interval);
-    }, [table])
     useEffect(() => {//load Status
         var interval = setInterval(() => {
             if (idRoom !== null && idRoom !== undefined) {
                 getStatus_Firebase(idRoom).then(res => {
                     if (res) {
-                        setStatus(res)
+                        setStatus({ ...res })
                         console.log(res);
                         if (res.Status === 'started') {
                             if (res.Player1 === false || res.Player2 === false) {
@@ -126,6 +80,49 @@ const PlayRoomPage = (props) => {
                     }
                 })
             }
+        }, 500);
+        return () => clearInterval(interval);
+    }, [])
+    if (typeof window !== 'undefined') {
+        if (window.localStorage.getItem('player') !== null) {
+            Player = parseInt(window.localStorage.getItem('player'))
+        }
+        //----------------------------------------------------------------
+        window.addEventListener("beforeunload", (ev) => {
+            ev.preventDefault();
+        });
+    }
+    useEffect(() => {
+
+
+        return () => {
+            // var Room = {}
+            // Room.Player1 = false;
+            // Room.Player2 = false;
+            // Room.Status = 'waiting';
+            // Room.IPv4_Player1 = '';
+            // Room.IPv4_Player2 = '';
+            // Room.Point = status.Point;
+            // setStatus_Firebase(Room, idRoom);
+        }
+    }, [])
+    useEffect(() => {//load Table
+        var interval = setInterval(() => {
+            if (idRoom !== null && idRoom !== undefined) {
+                getTable_Firebase(idRoom).then(res => {
+                    if (res) {
+                        setTable(res);
+                    } else {
+                        var tb = [...table];
+                        for (var i = 0; i < 362; i++) {
+                            tb[i] = -1
+                        }
+                        setTable(tb)
+                    }
+                })
+            } else {
+                setTable([...table])
+            }
         }, 100);
         return () => clearInterval(interval);
     }, [table])
@@ -154,10 +151,8 @@ const PlayRoomPage = (props) => {
         <>
             <Layout title="Playing. . ."></Layout>
             <Layout_Menu></Layout_Menu>
-
-            <PlayRoom footer_table={<Score_board />} table={rows}>
+            <PlayRoom status={status} table={rows}>
             </PlayRoom>
-
         </>
     );
 }

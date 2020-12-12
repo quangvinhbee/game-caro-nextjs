@@ -198,6 +198,16 @@
 .Profile .name_player h5 .ready {
   color: #1eff00 !important;
 }
+.Profile .name_player h5 .not_ready {
+  color: #ff0000 !important;
+}
+.Profile .countdown h3 {
+  font-size: 40px !important;
+  font-family: "Luckiest Guy", cursive !important;
+  -webkit-text-fill-color: #fd0b0bcc;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+}
 
 svg circle {
   stroke-width: 6px;
