@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 import { setTable_Firebase, getTable_Firebase, setStatus_Firebase, getStatus_Firebase } from '../../utils/firebase'
 import { check_Win } from '../../helpers/handleObject';
 import { geolocation } from '../../utils/api';
-import Footer_table from '../../components/Layout/Footer_table';
+import Score_board from '../../components/Layout/Score_board';
 
 const PlayRoomPage = (props) => {
     var rows = [19];
@@ -20,7 +20,7 @@ const PlayRoomPage = (props) => {
         Player2: false,
         PlayerNext: 1,
         CellJustChecked: -1,
-        Status: 'waiting',
+        Status: '',
         IPv4_Player1: '10.6.4.5',
         IPv4_Player2: '',
         Point: '0-0',
@@ -32,35 +32,20 @@ const PlayRoomPage = (props) => {
         //----------------------------------------------------------------
         window.addEventListener("beforeunload", (ev) => {
             ev.preventDefault();
-            window.localStorage.removeItem('player');
         });
     }
     useEffect(() => {
-        var stt = { ...status }
-        geolocation().then(res => {//get IP client
-            if (stt.IPv4_Player1 === '') {
-                stt.IPv4_Player1 = res.data.IPv4
-            } else if (stt.IPv4_Player2 === '' && stt.IPv4_Player1 !== res.data.IPv4) {
-                stt.IPv4_Player2 = res.data.IPv4
-            }
-            if (stt.Player1 === true
-                && stt.IPv4_Player1 !== ''
-                && (window.localStorage.getItem('player') !== '1' || window.localStorage.getItem('player') === null)
-                && stt.Status === 'waiting'
-                && stt.Player2 === false) {//set player 2
-                window.localStorage.setItem('player', 2)
-            }
-            setStatus(stt)
-        })
+
+
         return () => {
-            var Room = {}
-            Room.Player1 = false;
-            Room.Player2 = false;
-            Room.Status = 'waiting';
-            Room.IPv4_Player1 = '';
-            Room.IPv4_Player2 = '';
-            Room.Point = status.Point;
-            setStatus_Firebase(Room, idRoom);
+            // var Room = {}
+            // Room.Player1 = false;
+            // Room.Player2 = false;
+            // Room.Status = 'waiting';
+            // Room.IPv4_Player1 = '';
+            // Room.IPv4_Player2 = '';
+            // Room.Point = status.Point;
+            // setStatus_Firebase(Room, idRoom);
         }
     }, [])
     useEffect(() => {//load Table
@@ -105,8 +90,26 @@ const PlayRoomPage = (props) => {
                             }
 
                         }
-                        if ((window.localStorage.getItem('player') === null || Player === 2)
-                            && Player !== 1
+                        if (res.IPv4_Player1 === '' || res.IPv4_Player2 === '') {
+                            var stt = { ...status }
+                            geolocation().then(res => {//get IP client
+                                if (res.IPv4_Player1 === '') {
+                                    res.IPv4_Player1 = res.data.IPv4
+                                } else if (stt.IPv4_Player2 === '' && stt.IPv4_Player1 !== res.data.IPv4) {
+                                    stt.IPv4_Player2 = res.data.IPv4
+                                }
+                                if (stt.Player1 === true
+                                    && stt.IPv4_Player1 !== ''
+                                    && (window.localStorage.getItem('player') !== '1' || window.localStorage.getItem('player') === null)
+                                    && stt.Status === 'waiting'
+                                    && stt.Player2 === false) {//set player 2
+                                    window.localStorage.setItem('player', 2)
+                                }
+                                setStatus(stt)
+                            })
+                        }
+                        if ((window.localStorage.getItem('player') === null || window.localStorage.getItem('player') === '2')
+                            && window.localStorage.getItem('player') !== '1'
                             && status.IPv4_Player1 !== ''
                             && status.IPv4_Player2 !== ''
                             && status.Status === 'waiting'
@@ -152,7 +155,7 @@ const PlayRoomPage = (props) => {
             <Layout title="Playing. . ."></Layout>
             <Layout_Menu></Layout_Menu>
 
-            <PlayRoom footer_table={<Footer_table />} table={rows}>
+            <PlayRoom footer_table={<Score_board />} table={rows}>
             </PlayRoom>
 
         </>
