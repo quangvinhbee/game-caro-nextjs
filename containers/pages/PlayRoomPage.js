@@ -26,6 +26,7 @@ const PlayRoomPage = (props) => {
     }
     useEffect(() => {//load Status
         var interval = setInterval(() => {
+            console.log('intervallll', interval);
             if (idRoom !== null && idRoom !== undefined) {
                 getStatus_Firebase(idRoom).then(res => {
                     if (res) {
@@ -82,9 +83,9 @@ const PlayRoomPage = (props) => {
                     }
                 })
             }
-        }, 500);
+        }, 100);
         return () => clearInterval(interval);
-    }, [])
+    }, [table])
     useEffect(() => {//load Table
         var interval = setInterval(() => {
             if (idRoom !== null && idRoom !== undefined) {
