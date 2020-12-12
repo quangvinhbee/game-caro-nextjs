@@ -14,14 +14,16 @@ const PlayRoomPage = (props) => {
     const idRoom = router.query.idRoom;
     var Player = 0;
     const [table, setTable] = useState([])
-    const [status, setStatus] = useState({
-        PlayerNext: 1,
-        CellJustChecked: -1,
-        Status: '',
-        IPv4_Player1: '10.6.4.5',
-        IPv4_Player2: '',
-        Point: '0-0',
-    })
+    const [status, setStatus] = useState({})
+    if (typeof window !== 'undefined') {
+        if (window.localStorage.getItem('player') !== null) {
+            Player = parseInt(window.localStorage.getItem('player'))
+        }
+        //----------------------------------------------------------------
+        window.addEventListener("beforeunload", (ev) => {
+            ev.preventDefault();
+        });
+    }
     useEffect(() => {//load Status
         var interval = setInterval(() => {
             if (idRoom !== null && idRoom !== undefined) {
@@ -83,29 +85,6 @@ const PlayRoomPage = (props) => {
         }, 500);
         return () => clearInterval(interval);
     }, [])
-    if (typeof window !== 'undefined') {
-        if (window.localStorage.getItem('player') !== null) {
-            Player = parseInt(window.localStorage.getItem('player'))
-        }
-        //----------------------------------------------------------------
-        window.addEventListener("beforeunload", (ev) => {
-            ev.preventDefault();
-        });
-    }
-    useEffect(() => {
-
-
-        return () => {
-            // var Room = {}
-            // Room.Player1 = false;
-            // Room.Player2 = false;
-            // Room.Status = 'waiting';
-            // Room.IPv4_Player1 = '';
-            // Room.IPv4_Player2 = '';
-            // Room.Point = status.Point;
-            // setStatus_Firebase(Room, idRoom);
-        }
-    }, [])
     useEffect(() => {//load Table
         var interval = setInterval(() => {
             if (idRoom !== null && idRoom !== undefined) {
@@ -126,7 +105,6 @@ const PlayRoomPage = (props) => {
         }, 100);
         return () => clearInterval(interval);
     }, [table])
-
     const getidCell = (id) => {//cell just checked
         if (status.Status === 'started' && status.PlayerNext === Player) {
             var tb = [...table];

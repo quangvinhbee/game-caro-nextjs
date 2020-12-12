@@ -12,8 +12,8 @@ const CreateRoomPage = () => {
         Room.Player1 = true;
         Room.Player2 = false;
         Room.PlayerNext = 1;
-        Room.Avt_Player1 = Math.floor(Math.random() * 10) + 1;
-        Room.Avt_Player2 = Math.floor(Math.random() * 10) + 1;
+        Room.Avt_Player1 = Math.floor(Math.random() * 6) + 1;
+        Room.Avt_Player2 = Math.floor(Math.random() * 6) + 1;
         Room.CellJustChecked = -1;
         Room.Status = 'waiting';
         Room.IPv4_Player1 = '10.6.4.5';

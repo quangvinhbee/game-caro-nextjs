@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Detail_Player from './Detail_Player';
 
 export default function Score_board(props) {
     const { status } = props
+
     return (
         <>
             <div className='Detail_Player'>
