@@ -71,6 +71,7 @@ const PlayRoomPage = (props) => {
                         if (res.IPv4_Player1 === '' || res.IPv4_Player2 === '') {
                             var stt = { ...status }
                             geolocation().then(res => {//get IP client
+                                console.log(res.data.IPv4);
                                 if (res.IPv4_Player1 === '') {
                                     res.IPv4_Player1 = res.data.IPv4
                                 } else if (stt.IPv4_Player2 === '' && stt.IPv4_Player1 !== res.data.IPv4) {
