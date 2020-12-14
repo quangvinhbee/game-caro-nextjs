@@ -21,7 +21,7 @@ const PlayRoom = (props) => {
                             </table>
                         </Grid>
                         <Grid item xs={12} sm={3}>
-                            <Paper className='Score_Player1'>xs=12 sm=6</Paper><Paper className='Score_Player1'>xs=12 sm=6</Paper>
+                            <Paper className='Score_Player1'>xs=12 sm=6</Paper>
                         </Grid>
                     </Grid>
 
