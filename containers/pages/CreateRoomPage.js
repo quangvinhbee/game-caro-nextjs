@@ -18,7 +18,8 @@ const CreateRoomPage = () => {
         Room.Status = 'waiting';
         Room.IPv4_Player1 = '10.6.4.5';
         Room.IPv4_Player2 = '';
-        Room.Point = '0-0';
+        Room.Score_Player1 = 0;
+        Room.Score_Player2 = 0;
         window.localStorage.setItem('player', 1)
         setStatus_Firebase(Room, codeRoom);
     }

@@ -7,11 +7,12 @@ import { useRouter } from 'next/router'
 import { setTable_Firebase, getTable_Firebase, setStatus_Firebase, getStatus_Firebase } from '../../utils/firebase'
 import { check_Win } from '../../helpers/handleObject';
 import { geolocation } from '../../utils/api';
+import Score_board_Layout from '../Layout/Score_board_Layout';
 
 const PlayRoomPage = (props) => {
     var rows = [19];
     const router = useRouter();
-    const idRoom = router.query.idRoom;
+    const idRoom = router.query.idRoom
     var Player = 0;
     const [table, setTable] = useState([])
     const [status, setStatus] = useState({})
@@ -42,74 +43,95 @@ const PlayRoomPage = (props) => {
             } else {
                 setTable([...table])
             }
-        }, 100);
+        }, 500);
         return () => clearInterval(interval);
     }, [table])
-    useEffect(() => {//load Status
-        var interval = setInterval(() => {
-            console.log('intervallll', interval);
-            if (idRoom !== null && idRoom !== undefined) {
-                getStatus_Firebase(idRoom).then(res => {
-                    if (res) {
-                        setStatus({ ...res })
-                        console.log(res);
-                        if (res.Status === 'started') {
-                            if (res.Player1 === false || res.Player2 === false) {
-                                alert(`Đối thủ đã thoát`)
-                            }
-                            if (res.PlayerNext === 1) {
-                                if (check_Win(table, 19, res.CellJustChecked, 2)) {
-                                    //alert(`Player ${2} win`)
-                                }
-                            } else {
-                                if (check_Win(table, 19, res.CellJustChecked, 1)) {
-                                    //alert(`Player ${1} win`)
-                                }
-                            }
 
-                        }
-                        if (res.IPv4_Player1 === '' || res.IPv4_Player2 === '') {
-                            var stt = { ...status }
-                            geolocation().then(res => {//get IP client
-                                console.log(res.data.IPv4);
-                                if (res.IPv4_Player1 === '') {
-                                    res.IPv4_Player1 = res.data.IPv4
-                                } else if (stt.IPv4_Player2 === '' && stt.IPv4_Player1 !== res.data.IPv4) {
-                                    stt.IPv4_Player2 = res.data.IPv4
-                                }
-                                if (stt.Player1 === true
-                                    && stt.IPv4_Player1 !== ''
-                                    && (window.localStorage.getItem('player') !== '1' || window.localStorage.getItem('player') === null)
-                                    && stt.Status === 'waiting'
-                                    && stt.Player2 === false) {//set player 2
-                                    window.localStorage.setItem('player', 2)
-                                }
-                                setStatus(stt)
-                            })
-                        }
-                        if ((window.localStorage.getItem('player') === null || window.localStorage.getItem('player') === '2')
-                            && window.localStorage.getItem('player') !== '1'
-                            && status.IPv4_Player1 !== ''
-                            && status.IPv4_Player2 !== ''
-                            && status.Status === 'waiting'
-                            && status.Player2 === false) {//start game
-                            var Room = { ...status }
-                            Room.Player1 = true;
-                            Room.Player2 = true;
-                            Room.PlayerNext = 1;
-                            Room.CellJustChecked = null;
-                            Room.Status = 'started';
-                            Room.Point = '0-0';
-                            setStatus_Firebase(Room, idRoom);
-                        }
-                    }
-                })
-            }
-        }, 100);
-        return () => clearInterval(interval);
+    useEffect(() => {//load Status
+        if (idRoom != undefined) {
+            getStatus_Firebase(idRoom).then(res => {
+                if (JSON.stringify(res) !== JSON.stringify(status)) {
+                    setStatus(res)
+                }
+            })
+        }
+
+        return () => {
+
+        }
     }, [table])
+
+
+
+
+
+
+
+    // useEffect(() => {//load Status
+    //     var interval = setInterval(() => {
+    //         if (idRoom != null && idRoom != undefined) {
+    //             getStatus_Firebase(idRoom).then(res => {
+    //                 console.log(res);
+    //                 if (res !== null) {
+    //                     setStatus(res)
+    //                     if (res.Status === 'started') {
+    //                         if (res.Player1 === false || res.Player2 === false) {
+    //                             alert(`Đối thủ đã thoát`)
+    //                         }
+    //                         if (res.PlayerNext === 1) {
+    //                             if (check_Win(table, 19, res.CellJustChecked, 2)) {
+    //                                 alert(`Player ${2} win`)
+    //                             }
+    //                         } else {
+    //                             if (check_Win(table, 19, res.CellJustChecked, 1)) {
+    //                                 alert(`Player ${1} win`)
+    //                             }
+    //                         }
+    //                     }
+    //                     if (res.IPv4_Player1 === '' || res.IPv4_Player2 === '' && res.Status === 'waiting') {
+    //                         var stt = { ...status }
+    //                         geolocation().then(res => {//get IP client
+    //                             if (res.IPv4_Player1 === '') {
+    //                                 res.IPv4_Player1 = res.data.IPv4
+    //                             } else if (stt.IPv4_Player2 === '' && stt.IPv4_Player1 !== res.data.IPv4) {
+    //                                 stt.IPv4_Player2 = res.data.IPv4
+    //                             }
+    //                             if (stt.Player1 === true
+    //                                 && stt.IPv4_Player1 !== ''
+    //                                 && (window.localStorage.getItem('player') !== '1' || window.localStorage.getItem('player') === null)
+    //                                 && stt.Status === 'waiting'
+    //                                 && stt.Player2 === false) {//set player 2
+    //                                 window.localStorage.setItem('player', 2)
+    //                             }
+    //                             setStatus_Firebase(stt, idRoom);
+    //                         })
+    //                     }
+    //                     if ((window.localStorage.getItem('player') === null || window.localStorage.getItem('player') === '2')
+    //                         && window.localStorage.getItem('player') !== '1'
+    //                         && status.IPv4_Player1 !== ''
+    //                         && status.IPv4_Player2 !== ''
+    //                         && status.Status === 'waiting'
+    //                         && status.Player2 === false) {//start game
+    //                         var Room = { ...status }
+    //                         Room.Player1 = true;
+    //                         Room.Player2 = true;
+    //                         Room.PlayerNext = 1;
+    //                         Room.CellJustChecked = null;
+    //                         Room.Status = 'started';
+    //                         Room.Point = '0-0';
+    //                         setStatus_Firebase(Room, idRoom);
+    //                     }
+    //                 }
+    //             })
+    //         }
+    //     }, 100);
+    //     return () => clearInterval(interval);
+    // }, [])
     const getidCell = (id) => {//cell just checked
         if (status.Status === 'started' && status.PlayerNext === Player) {
+            var audio2 = new Audio('/sound/chess.wav');
+            audio2.load();
+            audio2.play();
             var tb = [...table];
             tb[id] = Player;
             var stt = { ...status }
@@ -132,7 +154,7 @@ const PlayRoomPage = (props) => {
         <>
             <Layout title="Playing. . ."></Layout>
             <Layout_Menu></Layout_Menu>
-            <PlayRoom status={status} table={rows}>
+            <PlayRoom status={status} table={rows} scoreboard={<Score_board_Layout status={status} />}>
             </PlayRoom>
         </>
     );

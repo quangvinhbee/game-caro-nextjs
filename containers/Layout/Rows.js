@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 
 const Rows = (props) => {
     var cols = [19];
+
     const { idCol, table, status } = props;
     const handleClick = (e) => {
         if (table[e.target.id] === -1) {
-            var audio2 = new Audio('/sound/chess.wav');
-            audio2.load();
-            audio2.play();
             props.idCell(e.target.id)
         }
     }

@@ -4,14 +4,14 @@ import Grid from '@material-ui/core/Grid';
 import Score_board from '../Layout/Score_board';
 
 const PlayRoom = (props) => {
-    const { status } = props
+    const { status, scoreboard } = props
     return (
         <>
             <div className='body'>
                 <div className='gameRoom'>
                     <Grid container spacing={1} className='grid_Room'>
                         <Grid item xs={12} sm={4}>
-                            <Score_board status={status} />
+                            {scoreboard}
                         </Grid>
                         <Grid item xs={12} sm={5}>
                             <table>
@@ -21,8 +21,7 @@ const PlayRoom = (props) => {
                             </table>
                         </Grid>
                         <Grid item xs={12} sm={3}>
-                            <Paper className='Score_Player1'>xs=12 sm=6</Paper>
-                            <Paper className='Score_Player1'>xs=12 sm=6</Paper>
+                            <Paper className='Score_Player1'>room chat</Paper>
                         </Grid>
                     </Grid>
 

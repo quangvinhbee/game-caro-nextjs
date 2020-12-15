@@ -13,12 +13,12 @@ export default function Score_board(props) {
                     <Grid container spacing={1}>
                         <Grid item xs={12} sm={6}>
                             <Paper className='Score_Player1'>
-                                <Detail_Player avt={status.Avt_Player1} status={status.Player1} name={'Player 1'}></Detail_Player>
+                                <Detail_Player avt={status.Avt_Player1} ready={status.Player1} name={'Player 1'} score={status.Score_Player1}></Detail_Player>
                             </Paper>
                         </Grid>
                         <Grid item xs={12} sm={6}>
                             <Paper className='Score_Player2'>
-                                <Detail_Player avt={status.Avt_Player2} status={status.Player2} name={'Player 2'}></Detail_Player>
+                                <Detail_Player avt={status.Avt_Player2} ready={status.Player2} name={'Player 2'} score={status.Score_Player2}></Detail_Player>
                             </Paper>
                         </Grid>
                     </Grid>
