@@ -201,7 +201,7 @@
 .Profile .name_player h5 .not_ready {
   color: #ff0000 !important;
 }
-.Profile .countdown h3 {
+.Profile .score_player h3 {
   font-size: 40px !important;
   font-family: "Luckiest Guy", cursive !important;
   -webkit-text-fill-color: #fd0b0bcc;

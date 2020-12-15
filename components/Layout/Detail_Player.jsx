@@ -27,7 +27,7 @@ export default function Detail_Player(props) {
                         {ready ? <i className="fa fa-check-circle ready"></i> : <i className="fa fa-times-circle not_ready"></i>}
                     </h5>
                 </div>
-                <div className="countdown">
+                <div className="score_player">
                     <h3 className="name">
                         {score}
                     </h3>

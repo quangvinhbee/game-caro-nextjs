@@ -7,6 +7,7 @@ const Score_board_Layout = (props) => {
     return (
         <>
             <Score_board status={status}></Score_board>
+            asd
         </>
     );
 }
