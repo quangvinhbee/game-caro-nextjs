@@ -8,12 +8,14 @@ import { setTable_Firebase, getTable_Firebase, setStatus_Firebase, getStatus_Fir
 import { check_Win } from '../../helpers/handleObject';
 import { geolocation } from '../../utils/api';
 import Score_board_Layout from '../Layout/Score_board_Layout';
+import Modal_game from '../../components/Layout/Modal_game';
 
 const PlayRoomPage = (props) => {
     var rows = [19];
     const router = useRouter();
     const idRoom = router.query.idRoom
     var Player = 0;
+    const [openModal, setopenModal] = useState({ open: false })
     const [table, setTable] = useState([])
     const [status, setStatus] = useState({})
     if (typeof window !== 'undefined') {
@@ -52,12 +54,43 @@ const PlayRoomPage = (props) => {
             getStatus_Firebase(idRoom).then(res => {
                 if (JSON.stringify(res) !== JSON.stringify(status)) {
                     setStatus(res)
+                    //---------------------------kiểm tra thắng thua--------------------------------------
+                    if (res.Status === 'started') {
+                        if (res.Player1 === false || res.Player2 === false) {
+                            var modal = { ...openModal }
+                            modal.open = true
+                            modal.title = 'Đối thủ đã thoát'
+                            setopenModal(modal)
+                        }
+                        if (res.PlayerNext === 1) {
+                            if (check_Win(table, 19, res.CellJustChecked, 2)) {
+                                var modal = { ...openModal }
+                                modal.open = true
+                                if (window.localStorage.getItem('player') == 2) {
+                                    modal.title = `Bạn đã chiến thắng.`
+                                } else {
+                                    modal.title = `Bạn đã thua.`
+                                }
+                                modal.body = 'Bạn có muốn chơi tiếp'
+                                setopenModal(modal)
+                            }
+                        } else {
+                            if (check_Win(table, 19, res.CellJustChecked, 1)) {
+                                var modal = { ...openModal }
+                                modal.open = true
+                                if (window.localStorage.getItem('player') == 1) {
+                                    modal.title = `Bạn đã chiến thắng.`
+                                } else {
+                                    modal.title = `Bạn đã thua.`
+                                }
+                                modal.body = 'Bạn có muốn chơi tiếp'
+                                setopenModal(modal)
+                            }
+                        }
+                    }
+                    //------------------------------------------------------------------------------------------------
                 }
             })
-        }
-
-        return () => {
-
         }
     }, [table])
 
@@ -156,6 +189,7 @@ const PlayRoomPage = (props) => {
             <Layout_Menu></Layout_Menu>
             <PlayRoom status={status} table={rows} scoreboard={<Score_board_Layout status={status} />}>
             </PlayRoom>
+            <Modal_game openModal={openModal}></Modal_game>
         </>
     );
 }
