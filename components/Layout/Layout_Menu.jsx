@@ -13,9 +13,11 @@ export default function Layout_Menu(props) {
       <AppBar position="fixed" className='appbar'>
         <Toolbar>
           <img src='images/logo.png' className='img img-logo' />
-          <Typography variant="h3" noWrap className='logo'>
-            CARO <span>GAME</span>
-          </Typography>
+          <Link href='/' className='cursor'>
+            <Typography variant="h3" noWrap className='logo'>
+              CARO <span>GAME</span>
+            </Typography>
+          </Link>
           <Link href='/CreateRoom' className='btn btn-create-room'><Button className='btn btn-create-room'>Create Room</Button></Link>
           <Link href='/JoinRoom' className='btn btn-create-room'><Button className='btn btn-join-room'>Join Room</Button></Link>
         </Toolbar>

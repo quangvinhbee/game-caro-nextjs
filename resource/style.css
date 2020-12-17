@@ -209,6 +209,10 @@
   -webkit-text-stroke-color: black;
 }
 
+.cursor {
+  cursor: pointer;
+}
+
 svg circle {
   stroke-width: 6px;
   animation: animate-circle 2s linear forwards;
