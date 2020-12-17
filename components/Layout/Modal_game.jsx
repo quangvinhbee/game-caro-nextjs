@@ -5,8 +5,10 @@ import Button from 'react-bootstrap/Button'
 const Modal_game = (props) => {
     const [show, setShow] = useState(false);
     const { openModal, button, open } = props
-    console.log(openModal);
-    const handleClose = () => setShow(false);
+    const handleClose = (e) => {
+        props.handleButton(e)
+        setShow(false);
+    }
     const handleOpen = () => setShow(true);
     useEffect(() => {
         if (openModal.open === true) {
@@ -15,16 +17,16 @@ const Modal_game = (props) => {
     }, [openModal]);
     return (
         <>
-            <Modal show={show} onHide={handleClose} className='Modal Modal_JoinRoom'>
+            <Modal show={show} onHide={() => handleClose(false)} className='Modal Modal_JoinRoom'>
                 <Modal.Header closeButton>
                     <Modal.Title>{openModal.title}</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>{openModal.body}</Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
+                    <Button variant="secondary" onClick={() => handleClose(false)}>
+                        Không
                     </Button>
-                    <Button variant="primary">Understood</Button>
+                    <Button variant="primary" onClick={() => handleClose(true)}>Chơi lại</Button>
                 </Modal.Footer>
             </Modal>
         </>

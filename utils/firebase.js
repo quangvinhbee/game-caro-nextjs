@@ -58,6 +58,10 @@ export function getStatus_Firebase(idRoom) {
     }
 }
 
+export function removeTable(idRoom) {
+    data.child(idRoom).child('TABLE').remove();
+}
+
 export function getRoom_Firebase(idRoom) {
     if (idRoom !== undefined && idRoom !== null) {
         return data.child(`${idRoom}`).once('value').then((snapshot) => {

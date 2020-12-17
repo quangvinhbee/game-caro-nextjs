@@ -4,7 +4,7 @@ import Layout_Menu from '../../components/Layout/Layout_Menu'
 import PlayRoom from '../../components/pages/PlayRoom';
 import Rows from '../Layout/Rows';
 import { useRouter } from 'next/router'
-import { setTable_Firebase, getTable_Firebase, setStatus_Firebase, getStatus_Firebase } from '../../utils/firebase'
+import { setTable_Firebase, getTable_Firebase, setStatus_Firebase, getStatus_Firebase, removeTable } from '../../utils/firebase'
 import { check_Win } from '../../helpers/handleObject';
 import { geolocation } from '../../utils/api';
 import Score_board_Layout from '../Layout/Score_board_Layout';
@@ -47,7 +47,7 @@ const PlayRoomPage = (props) => {
             }
         }, 100);
         return () => clearInterval(interval);
-    }, [table])
+    }, [])
 
     useEffect(() => {//load Status
         if (idRoom != undefined) {
@@ -56,12 +56,12 @@ const PlayRoomPage = (props) => {
                     setStatus(res)
                     //---------------------------kiểm tra thắng thua--------------------------------------
                     if (res.Status === 'started') {
-                        if (res.Player1 === false || res.Player2 === false) {
-                            var modal = { ...openModal }
-                            modal.open = true
-                            modal.title = 'Đối thủ đã thoát'
-                            setopenModal(modal)
-                        }
+                        // if (res.Player1 === false || res.Player2 === false) {
+                        //     var modal = { ...openModal }
+                        //     modal.open = true
+                        //     modal.title = 'Đối thủ đã thoát'
+                        //     setopenModal(modal)
+                        // }
                         if (res.PlayerNext === 1) {
                             if (check_Win(table, 19, res.CellJustChecked, 2)) {
                                 var modal = { ...openModal }
@@ -73,6 +73,15 @@ const PlayRoomPage = (props) => {
                                 }
                                 modal.body = 'Bạn có muốn chơi tiếp'
                                 setopenModal(modal)
+
+                                var Room = { ...status }
+                                Room.Player1 = false;
+                                Room.Player2 = false;
+                                Room.PlayerNext = (status.Score_Player1 + status.Score_Player2) % 2 + 1;
+                                Room.CellJustChecked = -1;
+                                Room.Score_Player1 = status.Score_Player1;
+                                Room.Score_Player2 = status.Score_Player2 + 1;
+                                setStatus_Firebase(Room, idRoom);
                             }
                         } else {
                             if (check_Win(table, 19, res.CellJustChecked, 1)) {
@@ -85,6 +94,15 @@ const PlayRoomPage = (props) => {
                                 }
                                 modal.body = 'Bạn có muốn chơi tiếp'
                                 setopenModal(modal)
+
+                                var Room = { ...status }
+                                Room.Player1 = false;
+                                Room.Player2 = false;
+                                Room.PlayerNext = (status.Score_Player1 + status.Score_Player2) % 2 + 1;
+                                Room.CellJustChecked = -1;
+                                Room.Score_Player1 = status.Score_Player1 + 1;
+                                Room.Score_Player2 = status.Score_Player2;
+                                setStatus_Firebase(Room, idRoom);
                             }
                         }
                     }
@@ -93,8 +111,6 @@ const PlayRoomPage = (props) => {
             })
         }
     }, [table])
-
-
 
     // useEffect(() => {//load Status
     //     var interval = setInterval(() => {
@@ -156,6 +172,16 @@ const PlayRoomPage = (props) => {
     //     }, 100);
     //     return () => clearInterval(interval);
     // }, [])
+    const handleButton = (e) => {
+        var stt = { ...status }
+        if (window.localStorage.getItem('player') === '1') {
+            stt.Player1 = e
+            setStatus_Firebase(stt, idRoom);
+        } else {
+            stt.Player2 = e
+            setStatus_Firebase(stt, idRoom);
+        }
+    }
     const getidCell = (id) => {//cell just checked
         if (status.Status === 'started' && status.PlayerNext === Player) {
             var audio2 = new Audio('/sound/chess.wav');
@@ -185,7 +211,7 @@ const PlayRoomPage = (props) => {
             <Layout_Menu></Layout_Menu>
             <PlayRoom status={status} table={rows} scoreboard={<Score_board_Layout status={status} />}>
             </PlayRoom>
-            <Modal_game openModal={openModal}></Modal_game>
+            <Modal_game openModal={openModal} handleButton={handleButton}></Modal_game>
         </>
     );
 }
