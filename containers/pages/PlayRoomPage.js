@@ -45,7 +45,7 @@ const PlayRoomPage = (props) => {
             } else {
                 setTable([...table])
             }
-        }, 500);
+        }, 100);
         return () => clearInterval(interval);
     }, [table])
 
@@ -93,10 +93,6 @@ const PlayRoomPage = (props) => {
             })
         }
     }, [table])
-
-
-
-
 
 
 
