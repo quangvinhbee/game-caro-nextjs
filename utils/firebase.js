@@ -58,7 +58,11 @@ export function getStatus_Firebase(idRoom) {
     }
 }
 
-export function removeTable(idRoom) {
+export function removeTable_Firebase(idRoom) {
+    data.child(idRoom).child('TABLE').remove();
+}
+
+export function removeRoom_Firebase(idRoom) {
     data.child(idRoom).child('TABLE').remove();
 }
 
