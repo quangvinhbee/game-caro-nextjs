@@ -9,7 +9,7 @@ const Layout = (props) => {
                 <meta name="theme-color" content="#000000" />
                 <meta name="viewport" content="initial-scale=1.0, width=device-width" />
                 {/* Favicon */}
-                <link rel="icon" href="/images/favicon.ico" />
+                <link rel="icon" href="/images/logo.png" />
                 {/* Font Open Sans */}
                 <link
                     href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"

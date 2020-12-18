@@ -109,9 +109,9 @@ $height_table: 100vw/12*5-1;
 
     &-logo {
         content: url("../public/images/logo.png");
-        width: 80px !important;
+        width: 40px !important;
         height: auto;
-        margin-right: 10px !important;
+        margin-right: 30px !important;
     }
 }
 
@@ -324,10 +324,21 @@ $height_table: 100vw/12*5-1;
             border-color: $color-black-light;
         }
 
+        h3 {
+            font-size: 30px;
+            font-weight: 700;
+        }
+
         .content {
             width: 50%;
             padding: 50px;
             margin-left: 100px;
+        }
+
+        .btn-play {
+            margin-top: -10px !important;
+            background-color: $color-blue;
+            color: white !important;
         }
 
         .image-caro {
@@ -383,6 +394,49 @@ $height_table: 100vw/12*5-1;
             i {
                 color: $color-blue;
             }
+        }
+
+        .container-item {
+            margin-top: 20px;
+            padding: 10px;
+
+            .paper {
+                transition: 0.5s;
+                box-shadow:
+                    0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+                    0px 4px 5px 0px rgba(0, 0, 0, 0.14),
+                    0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+
+                &:hover {
+                    transform: scale(1.05);
+                }
+
+                .content {
+                    padding: 10px;
+
+
+                    .header-1 {
+                        color: $color-blue;
+
+                        h4 {
+                            font-size: 20px;
+                            font-weight: 700;
+                            text-transform: uppercase;
+                            color: $color-blue;
+                        }
+
+
+                    }
+
+                    .body-content {
+                        span {
+                            font-size: 14px;
+                        }
+                    }
+                }
+
+            }
+
         }
     }
 
