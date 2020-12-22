@@ -12,7 +12,9 @@ const Index = () => {
                 <div className='homepage'>
                     <div className="session-1">
                         <div className="content">
-                            <h3>GAME CARO MIỄN PHÍ</h3>
+                            <div className="text-logo">
+                                GAME <span>CARO</span>
+                            </div>
                             <span>Được xây dựng trên nền tảng web nên bạn có thể chơi trên bất kì thiết bị nào (di động, browser,...)</span>
                             <hr></hr>
                             <Link href={`/CreateRoom`}>
@@ -26,7 +28,9 @@ const Index = () => {
                         </div>
                     </div>
                     <div className="session-2">
-                        <h3>GAME CARO FREE</h3>
+                        <div className="text-logo">
+                            GAME <span>CARO</span>
+                        </div>
                         <div className="benefits">
                             <ul>
                                 <li>
