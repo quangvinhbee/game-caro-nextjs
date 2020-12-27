@@ -16,14 +16,6 @@ You can start editing the page by modifying `pages/index.js`. The page auto-upda
 
 ### Installation
 
-Requires [Node.js](https://nodejs.org/) v4+ to run.
-
-Install the dependencies
-
-```sh
-$ cd expense-mgt
-$ npm install
-```
 
 Config Environment Variables
 ```sh
