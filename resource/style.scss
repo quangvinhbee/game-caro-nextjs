@@ -302,6 +302,8 @@ $height_table: 100vw/12*5-1;
 
 .homepage {
     display: inline-block;
+    border-radius: 10px;
+    margin-top: 50px;
     box-shadow:
         0px 2px 4px -1px rgba(0, 0, 0, 0.2),
         0px 4px 5px 0px rgba(0, 0, 0, 0.14),
@@ -317,7 +319,8 @@ $height_table: 100vw/12*5-1;
         display: flex;
         width: 100%;
         height: auto;
-        margin-top: 30px;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
         background-color: $color-black;
         color: rgb(156, 156, 156);
 
@@ -364,6 +367,7 @@ $height_table: 100vw/12*5-1;
             margin-top: -10px !important;
             background-color: $color-blue;
             color: white !important;
+        
         }
 
         .image-caro {
@@ -388,10 +392,11 @@ $height_table: 100vw/12*5-1;
 
     .session-2 {
         text-align: center;
-        justify-content: center;
         width: 100%;
         height: auto;
         color: white;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
         background-color: $color-black;
 
         font: {
@@ -492,7 +497,11 @@ $height_table: 100vw/12*5-1;
 
 }
 
-
+.container-page{
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
 
 
 

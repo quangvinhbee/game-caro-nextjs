@@ -10,7 +10,6 @@ export default function index(props) {
       <Layout_Menu></Layout_Menu>
       <div className='body'>
         <IndexPage></IndexPage>
-        
       </div >
     </>
   )
