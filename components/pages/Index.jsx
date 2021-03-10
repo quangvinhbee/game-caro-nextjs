@@ -11,7 +11,7 @@ const Index = () => {
       <div className="flex items-center justify-center w-full h-full">
         <Container
           maxWidth="lg"
-          className="container-page flex absolute top-1/3 "
+          className="container-page flex items-center justify-center "
         >
           <div className="homepage">
             <div className="session-1">
