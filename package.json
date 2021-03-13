@@ -24,7 +24,8 @@
     "react-redux": "^7.2.2",
     "redux": "^4.0.5",
     "sass": "^1.32.8",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "elliptic": ">=6.5.4"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.0.3",
@@ -32,6 +33,7 @@
     "gh-pages": "^3.1.0",
     "next": "^10.0.3",
     "postcss": "^7.0.35",
+    "elliptic": ">=6.5.4",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
   }
 }
